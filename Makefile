@@ -1,12 +1,14 @@
 # Book build: markdown -> pandoc -> LaTeX -> tectonic -> PDF.
+# Chapter sources live in chapters/; readme.md and toc.md there are front
+# matter and are intentionally excluded from the build.
 
-SRC := 00-preface.md \
-       01-part-i.md 02-part-ii.md 03-part-iii.md \
-       04-part-iv.md 05-part-v.md 06-part-vi.md \
-       07-part-vii.md \
-       08-beyond-ladybugdb.md \
-       app-a.md app-b.md app-c.md app-d.md \
-       references.md
+CHAPTERS := chapters
+NAMES := 00-preface \
+         01-part-i 02-part-ii 03-part-iii 04-part-iv 05-part-v \
+         06-part-vi 07-part-vii 08-beyond-ladybugdb \
+         app-a app-b app-c app-d \
+         references
+SRC := $(addprefix $(CHAPTERS)/,$(addsuffix .md,$(NAMES)))
 
 PANDOC_FLAGS := --from=markdown \
                 --top-level-division=chapter \

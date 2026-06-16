@@ -10,7 +10,7 @@ There is no application to build, no test suite, and no git repository here. "Wo
 
 ## Repository layout
 
-- Chapter files — `00-preface.md`, `01-part-i.md` … `07-part-vii.md`, the appendices `app-a.md`..`app-d.md`, then `references.md`, in reading order. `readme.md` and `toc.md` are front matter (excluded from the build).
+- `chapters/` — all book markdown: `00-preface.md`, `01-part-i.md` … `07-part-vii.md`, `08-beyond-ladybugdb.md`, the appendices `app-a.md`..`app-d.md`, then `references.md`, in reading order. `chapters/readme.md` and `chapters/toc.md` are front matter (excluded from the build). The Makefile builds from `chapters/` (see its `NAMES` list). `README.md`, `CLAUDE.md`, and `LICENCE.md` stay at the repo root.
 - `data/` — the Appendix A tutorial dataset: node CSVs (`systems`, `databases`, `table_assets`, `pipelines`, `jobs`, `dashboards`, `teams`) and relationship CSVs (`hosts`, `contains`, `reads_system`, `reads_table`, `writes_to`, `runs`, `powers`, `owns_pipeline`, `owns_dashboard`).
 - `scripts/schema.cypher` — `CREATE NODE/REL TABLE` definitions.
 - `scripts/load.cypher` — `COPY ... FROM` bulk-load statements.
@@ -24,12 +24,12 @@ There is no application to build, no test suite, and no git repository here. "Wo
 
 The scripts and dataset are **reproduced verbatim inside the book**, and the chapters narrate exactly what the data contains. A change in one place is a bug unless mirrored everywhere:
 
-- `scripts/schema.cypher` is quoted in full in `03-part-iii.md` §3.5. Edit both.
-- `scripts/load.cypher` is quoted in full in `03-part-iii.md` §3.6. Edit both.
-- `scripts/generate_synthetic.py` is quoted in full in `app-d.md`. Edit both.
-- The `explorer.sh` launch script is quoted in `07-part-vii.md` §7.5 (it is not checked in here — it's a script the reader creates).
+- `scripts/schema.cypher` is quoted in full in `chapters/03-part-iii.md` §3.5. Edit both.
+- `scripts/load.cypher` is quoted in full in `chapters/03-part-iii.md` §3.6. Edit both.
+- `scripts/generate_synthetic.py` is quoted in full in `chapters/app-d.md`. Edit both.
+- The `explorer.sh` launch script is quoted in `chapters/07-part-vii.md` §7.5 (it is not checked in here — it's a script the reader creates).
 - The `scripts/queries-part-*.cypher` files mirror the example queries in Parts III–VII. If you change a query in the prose, update the matching script file (and vice versa).
-- Node/edge **counts, names, and example query results** stated in Parts III–V (and `app-a.md`, the full dataset listing) are derived from `data/`. If you change a CSV, re-verify every count, every named entity (e.g. `Snowflake`, `orders_raw`, `Billing`, `dash_sales`), and every sample query output the prose asserts.
+- Node/edge **counts, names, and example query results** stated in Parts III–V (and `chapters/app-a.md`, the full dataset listing) are derived from `data/`. If you change a CSV, re-verify every count, every named entity (e.g. `Snowflake`, `orders_raw`, `Billing`, `dash_sales`), and every sample query output the prose asserts.
 - Schema, load, and generator share the same node/relationship vocabulary. The generator's referential-integrity check (`all_edges` map) and the schema's `FROM`/`TO` declarations must agree.
 
 When in doubt, treat the prose as the spec and the files as its tested implementation — keep them identical.
