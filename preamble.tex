@@ -1,0 +1,91 @@
+% Injected into Pandoc's default LaTeX template via --include-in-header.
+
+% Numbering OFF: heading text carries the manual numbers (2.1, 3.6, ...),
+% so LaTeX must not add its own. Chapters/sections stay in the TOC and keep
+% their heading styling; only the auto-number is suppressed.
+\setcounter{secnumdepth}{-1}
+\setcounter{tocdepth}{2}
+
+% Tighten the vertical space before chapter entries in the table of contents so
+% the last entry does not spill onto a page of its own.
+\RedeclareSectionCommand[tocbeforeskip=.3em plus 1pt]{chapter}
+
+% No date on the title page (and suppress LaTeX's \today fallback when the
+% date metadata is absent).
+\date{}
+
+% Nicer typography; available in the default TeX distribution Tectonic fetches.
+\usepackage{microtype}
+
+% Let TeX absorb the occasional long inline-code token (e.g. a long filename)
+% in prose instead of overrunning the right margin.
+\setlength{\emergencystretch}{2em}
+
+% Monospace font: IBM Plex Mono. Shipped as a CTAN/TeX Live package, so it is
+% fetched and embedded by Tectonic locally AND already present on arXiv's TeX
+% Live build servers -- no font bundling, works for arXiv source submission.
+\usepackage[scale=0.95]{plex-mono}
+
+% Body text font: Palatino (TeX Gyre Pagella). Loaded by OTF filename so
+% Tectonic resolves it from the bundled TeX Live fonts (a plain
+% \setmainfont{TeX Gyre Pagella} by family name is not found). fontspec is
+% already loaded by the template under XeTeX. Headings stay KOMA sans.
+\setmainfont{texgyrepagella-regular.otf}[
+  BoldFont       = texgyrepagella-bold.otf,
+  ItalicFont     = texgyrepagella-italic.otf,
+  BoldItalicFont = texgyrepagella-bolditalic.otf
+]
+
+% Wrap long lines in highlighted code blocks so Cypher/Bash lines do not run
+% past the right margin. Pandoc does not load fvextra or enable wrapping; load
+% it and redefine pandoc's Highlighting environment to break long lines, and to
+% break within long unbroken tokens (Cypher path patterns are exactly that).
+\usepackage{fvextra}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{%
+  commandchars=\\\{\}, breaklines, breakanywhere, breakautoindent=true}
+
+% Render the math symbols that appear in prose (Part VI) via math mode, since
+% the Latin Modern body font has no glyphs for them. Without this they are
+% silently dropped from the PDF.
+\usepackage{newunicodechar}
+\newunicodechar{∀}{\ensuremath{\forall}}
+\newunicodechar{∃}{\ensuremath{\exists}}
+\newunicodechar{¬}{\ensuremath{\lnot}}
+\newunicodechar{≡}{\ensuremath{\equiv}}
+\newunicodechar{→}{\ensuremath{\rightarrow}}
+
+% Figures: native TikZ diagrams (vector, fonts match the text, no external
+% tools or image files -- builds identically under Tectonic and arXiv).
+\usepackage{tikz}
+\usetikzlibrary{positioning, arrows.meta, calc, fit, backgrounds}
+
+% Shared palette + node/edge styles for the graph figures (medallion layers).
+\definecolor{gbSource}{HTML}{6B7280}   % systems
+\definecolor{gbRaw}{HTML}{B45309}      % raw layer
+\definecolor{gbCurated}{HTML}{2563EB}  % curated layer
+\definecolor{gbMart}{HTML}{059669}     % mart layer
+\definecolor{gbDash}{HTML}{7C3AED}     % dashboards
+\definecolor{gbNode}{HTML}{334155}     % schema/meta-model nodes
+\tikzset{
+  gbentity/.style 2 args={rounded corners=2pt, draw=#1, line width=0.6pt,
+    fill=#1!8, text=black, font=\small\ttfamily, inner sep=4pt, align=center,
+    minimum height=#2},
+  gbnode/.style={gbentity={gbNode}{7mm}},
+  gbedge/.style={-{Stealth[length=5pt,width=4pt]}, draw=gray!65, line width=0.6pt},
+  gbhead/.style={draw=none, fill=none, font=\sffamily\bfseries\small, text=gray!55},
+  gblabel/.style={font=\scriptsize\sffamily, text=gray!55, fill=white,
+    inner sep=1.5pt, midway}
+}
+
+% Chapters are unnumbered, so number figures plainly and continuously
+% (Figure 1, 2, ...) rather than per-chapter, which would reset to 1 each part.
+\usepackage{chngcntr}
+\counterwithout{figure}{chapter}
+\renewcommand{\thefigure}{\arabic{figure}}
+
+% --- Covers: full-bleed images from assets/ (front + back) ------------------
+% The visible front cover is an explicit title page injected before the body
+% via pandoc's --include-before-body=cover-front.tex; the back cover is the
+% block at the end of references.md. Both \includegraphics the PNGs in assets/.
+% Suppress pandoc's own \maketitle so it does not add a second title page.
+\AtBeginDocument{\let\maketitle\relax}

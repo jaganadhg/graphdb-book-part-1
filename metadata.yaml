@@ -1,0 +1,18 @@
+---
+title: "Graph for the Data You Already Own"
+subtitle: "A short book on Graph Data for Working Data Engineers, with LadybugDB"
+author: "Jaganadh Gopinadhan (Jagan)"
+documentclass: scrbook
+classoption:
+  - 11pt
+  - DIV=11
+  - twoside
+  - openany
+toc: true
+toc-title: "Contents"
+toc-depth: 2
+colorlinks: true
+linkcolor: Black
+urlcolor: RoyalBlue
+lang: en-US
+---

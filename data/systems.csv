@@ -1,0 +1,5 @@
+id,name,kind
+sys_crm,CRM,SaaS
+sys_billing,Billing,SaaS
+sys_snowflake,Snowflake,Warehouse
+sys_bi,PowerBI,BI

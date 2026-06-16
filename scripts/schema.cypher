@@ -1,0 +1,44 @@
+CREATE NODE TABLE System(
+  id STRING, name STRING, kind STRING,
+  PRIMARY KEY (id)
+);
+
+CREATE NODE TABLE Database(
+  id STRING, name STRING, layer STRING,
+  PRIMARY KEY (id)
+);
+
+CREATE NODE TABLE TableAsset(
+  id STRING, name STRING, layer STRING, domain STRING,
+  PRIMARY KEY (id)
+);
+
+CREATE NODE TABLE Pipeline(
+  id STRING, name STRING, mode STRING, schedule STRING,
+  PRIMARY KEY (id)
+);
+
+CREATE NODE TABLE Job(
+  id STRING, name STRING, engine STRING,
+  PRIMARY KEY (id)
+);
+
+CREATE NODE TABLE Dashboard(
+  id STRING, name STRING, tool STRING,
+  PRIMARY KEY (id)
+);
+
+CREATE NODE TABLE Team(
+  id STRING, name STRING, function STRING,
+  PRIMARY KEY (id)
+);
+
+CREATE REL TABLE HOSTS(FROM System TO Database);
+CREATE REL TABLE CONTAINS(FROM Database TO TableAsset);
+CREATE REL TABLE READS_SYSTEM(FROM Pipeline TO System);
+CREATE REL TABLE READS_TABLE(FROM Pipeline TO TableAsset);
+CREATE REL TABLE WRITES_TO(FROM Pipeline TO TableAsset);
+CREATE REL TABLE RUNS(FROM Job TO Pipeline);
+CREATE REL TABLE POWERS(FROM TableAsset TO Dashboard);
+CREATE REL TABLE OWNS_PIPELINE(FROM Team TO Pipeline);
+CREATE REL TABLE OWNS_DASHBOARD(FROM Team TO Dashboard);

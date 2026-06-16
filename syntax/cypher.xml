@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE language SYSTEM "language.dtd">
+<language name="Cypher" version="1" kateversion="5.0"
+          section="Database" extensions="*.cypher;*.cyp"
+          author="graph-book" license="MIT">
+  <highlighting>
+    <list name="keywords">
+      <item>MATCH</item>
+      <item>OPTIONAL</item>
+      <item>RETURN</item>
+      <item>WHERE</item>
+      <item>WITH</item>
+      <item>UNWIND</item>
+      <item>CREATE</item>
+      <item>MERGE</item>
+      <item>SET</item>
+      <item>DELETE</item>
+      <item>DETACH</item>
+      <item>REMOVE</item>
+      <item>ORDER</item>
+      <item>BY</item>
+      <item>SKIP</item>
+      <item>LIMIT</item>
+      <item>DISTINCT</item>
+      <item>AS</item>
+      <item>AND</item>
+      <item>OR</item>
+      <item>NOT</item>
+      <item>IN</item>
+      <item>NODE</item>
+      <item>REL</item>
+      <item>TABLE</item>
+      <item>PRIMARY</item>
+      <item>KEY</item>
+      <item>COPY</item>
+      <item>COUNT</item>
+      <item>COLLECT</item>
+      <item>FROM</item>
+      <item>TO</item>
+    </list>
+    <list name="types">
+      <item>STRING</item>
+      <item>INT64</item>
+      <item>INT32</item>
+      <item>DOUBLE</item>
+      <item>BOOLEAN</item>
+      <item>DATE</item>
+      <item>TIMESTAMP</item>
+    </list>
+    <contexts>
+      <context name="Normal" attribute="Normal Text" lineEndContext="#stay">
+        <keyword attribute="Keyword" context="#stay" String="keywords"/>
+        <keyword attribute="Data Type" context="#stay" String="types"/>
+        <DetectChar attribute="String" context="Dq" char="&quot;"/>
+        <DetectChar attribute="String" context="Sq" char="'"/>
+        <Detect2Chars attribute="Comment" context="LineComment" char="-" char1="-"/>
+        <Detect2Chars attribute="Comment" context="LineComment" char="/" char1="/"/>
+      </context>
+      <context name="Dq" attribute="String" lineEndContext="#stay">
+        <DetectChar attribute="String" context="#pop" char="&quot;"/>
+      </context>
+      <context name="Sq" attribute="String" lineEndContext="#stay">
+        <DetectChar attribute="String" context="#pop" char="'"/>
+      </context>
+      <context name="LineComment" attribute="Comment" lineEndContext="#pop"/>
+    </contexts>
+    <itemDatas>
+      <itemData name="Normal Text" defStyleNum="dsNormal"/>
+      <itemData name="Keyword" defStyleNum="dsKeyword"/>
+      <itemData name="Data Type" defStyleNum="dsDataType"/>
+      <itemData name="String" defStyleNum="dsString"/>
+      <itemData name="Comment" defStyleNum="dsComment"/>
+    </itemDatas>
+  </highlighting>
+  <general>
+    <keywords casesensitive="0"/>
+  </general>
+</language>

@@ -1,0 +1,8 @@
+id,name,mode,schedule
+pl_ingest_crm,ingest_crm,batch,hourly
+pl_ingest_billing,ingest_billing,batch,daily
+pl_curate_customers,curate_customers,batch,daily
+pl_curate_orders,curate_orders,batch,daily
+pl_curate_payments,curate_payments,batch,daily
+pl_build_customer360,build_customer_360,batch,daily
+pl_build_revenue,build_revenue_daily,batch,daily

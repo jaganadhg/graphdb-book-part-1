@@ -1,0 +1,9 @@
+id,name,layer,domain
+tbl_customers_raw,customers_raw,raw,customer
+tbl_orders_raw,orders_raw,raw,order
+tbl_payments_raw,payments_raw,raw,payment
+tbl_customers_curated,customers_curated,curated,customer
+tbl_orders_curated,orders_curated,curated,order
+tbl_payments_curated,payments_curated,curated,payment
+tbl_customer_360,customer_360,mart,customer
+tbl_revenue_daily,revenue_daily,mart,finance

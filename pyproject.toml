@@ -1,0 +1,10 @@
+[project]
+name = "graph-book-synth"
+version = "0.1.0"
+description = "Environment for the Appendix D synthetic-data generator (scripts/generate_synthetic.py)."
+requires-python = ">=3.10"
+dependencies = [
+    "sdv>=1.0",
+    "pandas",
+    "numpy",
+]

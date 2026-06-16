@@ -1,0 +1,9 @@
+from,to
+pl_ingest_crm,tbl_customers_raw
+pl_ingest_crm,tbl_orders_raw
+pl_ingest_billing,tbl_payments_raw
+pl_curate_customers,tbl_customers_curated
+pl_curate_orders,tbl_orders_curated
+pl_curate_payments,tbl_payments_curated
+pl_build_customer360,tbl_customer_360
+pl_build_revenue,tbl_revenue_daily

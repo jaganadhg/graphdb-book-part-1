@@ -1,0 +1,14 @@
+# Generated book build artifacts
+build/
+docs/
+# Pandoc/TeX leftovers
+*.aux
+*.log
+*.toc
+*.out
+
+# Python (uv) environment and generated synthetic data
+.venv/
+data_synth/
+__pycache__/
+data/synthdata/

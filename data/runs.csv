@@ -1,0 +1,8 @@
+from,to
+job_morning_ingest,pl_ingest_crm
+job_morning_ingest,pl_ingest_billing
+job_curate,pl_curate_customers
+job_curate,pl_curate_orders
+job_curate,pl_curate_payments
+job_marts,pl_build_customer360
+job_marts,pl_build_revenue

@@ -1,0 +1,9 @@
+from,to
+db_raw,tbl_customers_raw
+db_raw,tbl_orders_raw
+db_raw,tbl_payments_raw
+db_curated,tbl_customers_curated
+db_curated,tbl_orders_curated
+db_curated,tbl_payments_curated
+db_mart,tbl_customer_360
+db_mart,tbl_revenue_daily

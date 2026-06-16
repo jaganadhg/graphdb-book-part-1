@@ -1,0 +1,5 @@
+from,to
+tbl_orders_curated,dash_sales
+tbl_customer_360,dash_sales
+tbl_customer_360,dash_customer_health
+tbl_revenue_daily,dash_revenue

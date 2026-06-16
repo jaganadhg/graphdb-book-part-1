@@ -1,0 +1,4 @@
+from,to
+sys_snowflake,db_raw
+sys_snowflake,db_curated
+sys_snowflake,db_mart

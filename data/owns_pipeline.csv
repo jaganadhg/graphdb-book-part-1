@@ -1,0 +1,8 @@
+from,to
+team_data_eng,pl_ingest_crm
+team_data_eng,pl_ingest_billing
+team_analytics,pl_curate_customers
+team_analytics,pl_curate_orders
+team_analytics,pl_curate_payments
+team_analytics,pl_build_customer360
+team_analytics,pl_build_revenue
