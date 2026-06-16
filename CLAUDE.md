@@ -10,7 +10,7 @@ There is no application to build, no test suite, and no git repository here. "Wo
 
 ## Repository layout
 
-- `chapters/` — all book markdown: `00-preface.md`, `01-part-i.md` … `07-part-vii.md`, `08-beyond-ladybugdb.md`, the appendices `app-a.md`..`app-d.md`, then `references.md`, in reading order. `chapters/readme.md` and `chapters/toc.md` are front matter (excluded from the build). The Makefile builds from `chapters/` (see its `NAMES` list). `README.md`, `CLAUDE.md`, and `LICENCE.md` stay at the repo root.
+- `chapters/` — all book markdown: `00-preface.md`, `01-part-i.md` … `07-part-vii.md`, `08-beyond-ladybugdb.md`, the appendices `app-a.md`..`app-d.md`, then `references.md`, in reading order. `chapters/readme.md` and `chapters/toc.md` are front matter (excluded from the build). The Makefile builds from `chapters/` (see its `NAMES` list). `README.md`, `CLAUDE.md`, and `LICENSE` stay at the repo root.
 - `data/` — the Appendix A tutorial dataset: node CSVs (`systems`, `databases`, `table_assets`, `pipelines`, `jobs`, `dashboards`, `teams`) and relationship CSVs (`hosts`, `contains`, `reads_system`, `reads_table`, `writes_to`, `runs`, `powers`, `owns_pipeline`, `owns_dashboard`).
 - `scripts/schema.cypher` — `CREATE NODE/REL TABLE` definitions.
 - `scripts/load.cypher` — `COPY ... FROM` bulk-load statements.
